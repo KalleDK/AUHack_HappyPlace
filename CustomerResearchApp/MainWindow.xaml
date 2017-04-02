@@ -1,0 +1,22 @@
+﻿<Window x:Class="CustomerResearchApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:CustomerResearchApp.ViewModels"
+        xmlns:views="clr-namespace:CustomerResearchApp.Views"
+        xmlns:customerResearchApp="clr-namespace:CustomerResearchApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1000">
+    <Window.DataContext>
+        <customerResearchApp:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:WebCamViewModel}">
+            <views:WebCamView/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Margin="5">
+        <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
+    </Grid>
+</Window>

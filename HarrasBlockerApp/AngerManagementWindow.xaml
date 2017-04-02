@@ -1,0 +1,55 @@
+﻿<Window x:Class="HarrasBlockerApp.AngerManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HarrasBlockerApp"
+        xmlns:moods="using:HarrasBlockerApp"
+        mc:Ignorable="d"
+        Title="AngerManagementWindow" Height="224.8" Width="600"
+        DataContext="{Binding Mode=OneWay, RelativeSource={RelativeSource Self}}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Slider">
+                <Setter Property="Minimum" Value="-3"/>
+                <Setter Property="Maximum" Value="20"/>
+                <Setter Property="TickPlacement" Value="BottomRight"/>
+                <Setter Property="TickFrequency" Value="0.5"/>
+            </Style>
+        </Grid.Resources>
+        <StackPanel x:Name="leftStack" Grid.Column="0" Width="auto" Margin="3">
+            <TextBox Text="Anger Weight" HorizontalAlignment="Center"/>
+            <Slider x:Name="angerSlider" ValueChanged="angerSlider_ValueChanged"/>
+            <TextBox Text="Contempt Weight" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+            <Slider x:Name="contemptSlider" ValueChanged="contemptSlider_ValueChanged"/>
+            <TextBox Text="Disgust Weight" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+            <Slider x:Name="disgustSlider" ValueChanged="disgustSlider_ValueChanged"/>
+
+            <TextBox Text="Sadness Weight" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+            <Slider x:Name="sadnessSlider" ValueChanged="sadnessSlider_ValueChanged"></Slider>
+
+        </StackPanel>
+        <StackPanel x:Name="centerStack" Grid.Column="1" Width="auto" Margin="3">
+            <TextBox Text="Fear Weight" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+            <Slider x:Name="fearSlider" ValueChanged="fearSlider_ValueChanged"></Slider>
+            <TextBox Text="Happiness Weight" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+            <Slider x:Name="happinessSlider" ValueChanged="happinessSlider_ValueChanged"></Slider>
+            <TextBox Text="Surprise Weight" HorizontalAlignment="Center"/>
+            <Slider x:Name="surpriseSlider" ValueChanged="surpriseSlider_ValueChanged"></Slider>
+            <TextBox Text="Neutral Weight" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+            <Slider x:Name="neutralSlider"  ValueChanged="neutralSlider_ValueChanged"></Slider>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" HorizontalAlignment="Left" Height="189" Margin="2,3,-0.4,0" VerticalAlignment="Top" Width="196">
+            <CheckBox x:Name="checkBox" Content="Store Angry Images" Margin="4" IsChecked="{Binding StoreAngryImages}"/>
+            <CheckBox x:Name="killCheckbox" Content="Kill PC when triggered" Margin="4" IsChecked="{Binding KillPC}"></CheckBox>
+            <TextBlock x:Name="moodTextBlock" HorizontalAlignment="Center" Margin="0,28,0,0" Text="{Binding Mood}"></TextBlock>
+        </StackPanel>
+
+    </Grid>
+</Window>
